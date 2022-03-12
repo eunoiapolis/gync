@@ -64,10 +64,10 @@ for i in repo_list:
         print(i + " is up-to-date")
     else:
         print("Syncing " + i)
-        print(subprocess.run(["git","-C", i, "pull"]))
-        print(subprocess.run(["git","-C", i, "add", "."]))
-        print(subprocess.run(["git","-C", i, "commit", "-m", "autocommit"]))
-        print(subprocess.run(["git","-C", i, "push"]))
+        subprocess.run(["git","-C", i, "pull"])
+        subprocess.run(["git","-C", i, "add", "."])
+        subprocess.run(["git","-C", i, "commit", "-m", "autocommit"])
+        subprocess.run(["git","-C", i, "push"])
 
 print(repo_list)
 
