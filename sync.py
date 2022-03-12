@@ -7,7 +7,10 @@ def safe_open_w(path):
     return open(path, 'w')
 
 def check_args(args_list):
-    if len(args_list) > 2 and args_list[1] in args_actions:
+    if len(args_list) == 2 and args_list[1] in args_actions:
+        pwd_dir = subprocess.run(['pwd'], stdout=subprocess.PIPE).stdout.decode('utf-8')
+        repo_args.append(pwd_dir + '/')
+    elif len(args_list) > 2 and args_list[1] in args_actions:
         for i in range(2, len(args_list)):
             if is_git_directory(args_list[i]):
                 repo_args.append(args_list[i])
@@ -48,7 +51,7 @@ def repo_check(path):
 
 config_file = str(os.environ.get('HOME'))+'/.config/resonate/config.txt'
 args_list = sys.argv
-args_actions = ['-a', '-r']
+args_actions = ['-a', '-r', '-A', '-R']
 
 repo_list = []
 repo_args = []
