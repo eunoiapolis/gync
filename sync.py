@@ -10,7 +10,7 @@ def check_args(args_list):
     if len(args_list) == 2 and args_list[1] in args_actions:
         pwd_dir = subprocess.run(['pwd'], stdout=subprocess.PIPE).stdout.decode('utf-8')
         repo_args.append(pwd_dir.strip() + '/')
-        print(repo_args)
+        modify_file()
     elif len(args_list) > 2 and args_list[1] in args_actions:
         for i in range(2, len(args_list)):
             if is_git_directory(args_list[i]):
