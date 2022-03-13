@@ -73,6 +73,4 @@ for i in repo_list:
         subprocess.run(["git","-C", i, "commit", "-m", "autocommit"])
         subprocess.run(["git","-C", i, "push"])
 
-print(repo_list)
-
 
