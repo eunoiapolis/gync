@@ -9,7 +9,8 @@ def safe_open_w(path):
 def check_args(args_list):
     if len(args_list) == 2 and args_list[1] in args_actions:
         pwd_dir = subprocess.run(['pwd'], stdout=subprocess.PIPE).stdout.decode('utf-8')
-        repo_args.append(pwd_dir + '/')
+        repo_args.append(pwd_dir.strip() + '/')
+        print(repo_args)
     elif len(args_list) > 2 and args_list[1] in args_actions:
         for i in range(2, len(args_list)):
             if is_git_directory(args_list[i]):
@@ -27,11 +28,11 @@ def is_git_directory(path = '.'):
 
 def modify_file():
     with safe_open_w(config_file) as config:
-        if args_list[1] == '-a':
+        if args_list[1] == '-a' or args_list[1] == '-A':
             for i in repo_args:
                 if i not in repo_list:
                     repo_list.append(i)
-        elif args_list[1] == '-r':
+        elif args_list[1] == '-r' or args_list[1] == '-R':
             for i in repo_args:
                 if i in repo_list:
                     repo_list.remove(i)
