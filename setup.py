@@ -9,5 +9,5 @@ setup(
     author_email='eunoiapolis@gmail.com',
     url='https://gync.eunoiapolis.com/',
     packages=['gync'],
-    install_requires=['os', 'os.path', 'sys', 'subprocess'],
+#    install_requires=['os', 'os.path', 'sys', 'subprocess'],
 )
